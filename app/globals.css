@@ -100,6 +100,13 @@ a {
   text-decoration: none;
 }
 
+.homepage-hero {
+  /* background-color: cyan; */
+  display: flex;
+  padding: 3rem;
+  align-items: center;
+  justify-content: space-around;
+}
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
