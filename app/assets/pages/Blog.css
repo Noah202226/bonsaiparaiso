@@ -1,0 +1,34 @@
+.blog-container {
+  padding: 40px 0;
+}
+
+.blog-page-title {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.blog-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.blog-title {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  line-height: 1.2;
+}
+
+.blog-excerpt {
+  flex-grow: 1;
+}
+
+.mantine-Button-root {
+  margin-top: auto;
+}
+
+@media (max-width: 768px) {
+  .blog-container {
+    padding: 20px 0;
+  }
+}

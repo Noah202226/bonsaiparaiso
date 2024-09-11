@@ -1,22 +1,8 @@
-// Import styles of packages that you've installed.
-// All packages except `@mantine/hooks` require styles imports
 import "@mantine/core/styles.css";
 import "@mantine/carousel/styles.css";
-
 import "./globals.css";
-
-import { ColorSchemeScript, createTheme, MantineProvider } from "@mantine/core";
-
-export const metadata = {
-  title: "Bonsai Paraiso",
-  description: "Bonsai Shop official website",
-};
-
-const theme = createTheme({
-  fontFamily: "Verdana, sans-serif",
-  fontFamilyMonospace: "Monaco, Courier, monospace",
-  headings: { fontFamily: "Greycliff CF, sans-serif" },
-});
+import { ColorSchemeScript } from "@mantine/core";
+import ColorSchemeProvider from "./components/ColorSchemeProvider";
 
 export default function RootLayout({ children }) {
   return (
@@ -25,9 +11,7 @@ export default function RootLayout({ children }) {
         <ColorSchemeScript />
       </head>
       <body>
-        <MantineProvider theme={theme} defaultColorScheme="dark">
-          {children}
-        </MantineProvider>
+        <ColorSchemeProvider>{children}</ColorSchemeProvider>
       </body>
     </html>
   );

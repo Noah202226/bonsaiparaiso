@@ -10,6 +10,7 @@ import {
   Container,
   Drawer,
   Stack,
+  useMantineColorScheme,
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import {
@@ -17,7 +18,10 @@ import {
   IconArticle,
   IconInfoCircle,
   IconHelp,
+  IconSun,
+  IconMoon,
 } from "@tabler/icons-react";
+import ColorSchemeToggle from "./components/ColorSchemeToggle";
 
 // Pages
 import Homepage from "./pages/Homepage";
@@ -27,7 +31,8 @@ import Support from "./pages/Support";
 
 export default function ResponsiveNavbar() {
   const [opened, { toggle, close }] = useDisclosure();
-  const [currentPage, setCurrentPage] = useState("home");
+  const [currentPage, setCurrentPage] = useState(<Homepage />);
+  const { colorScheme, toggleColorScheme } = useMantineColorScheme();
 
   const navItems = [
     { label: "Home", icon: IconHome, page: <Homepage /> },
@@ -66,8 +71,9 @@ export default function ResponsiveNavbar() {
             </Group>
             <Group gap="xs" visibleFrom="sm">
               {navItems.map((item) => (
-                <NavButton key={item.page} item={item} />
+                <NavButton key={item.label} item={item} />
               ))}
+              <ColorSchemeToggle />
             </Group>
           </Group>
         </Container>
@@ -82,15 +88,16 @@ export default function ResponsiveNavbar() {
       >
         <Stack>
           {navItems.map((item) => (
-            <NavButton key={item.page} item={item} isMobile />
+            <NavButton key={item.label} item={item} isMobile />
           ))}
+          <ColorSchemeToggle />
         </Stack>
       </Drawer>
 
       <AppShell.Main>
         <Container size="lg">
           {/* Your main content here */}
-          <h1>Current Page: {currentPage}</h1>
+          {currentPage}
         </Container>
       </AppShell.Main>
     </AppShell>

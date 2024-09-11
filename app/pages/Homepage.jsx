@@ -1,26 +1,37 @@
 import React from "react";
-import { SimpleGrid, Text, Card, Group, Badge } from "@mantine/core";
+import { Text, Card, Group, Container } from "@mantine/core";
 import Image from "next/image";
+import "../assets/pages/Homepage.css";
 
 function ProductCard({ image, title, price, rating, soldCount }) {
   return (
-    <Card shadow="sm" padding="lg" radius="md" withBorder>
-      <Card.Section>
-        <div style={{ position: "relative", width: "100%", height: "200px" }}>
-          <Image src={image} alt={title} fill style={{ objectFit: "cover" }} />
-        </div>
-      </Card.Section>
-
-      <Group position="apart" mt="md" mb="xs">
-        <Text weight={500}>{title}</Text>
-        <Badge color="pink" variant="light">
-          ₱{price}
-        </Badge>
-      </Group>
-
-      <Text size="sm" color="dimmed">
-        ★ {rating} | {soldCount} sold
-      </Text>
+    <Card
+      shadow="sm"
+      padding="lg"
+      radius="md"
+      withBorder
+      className="product-card"
+    >
+      <div className="image-container">
+        <Image
+          src={image}
+          alt={title}
+          fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+          style={{ objectFit: "cover" }}
+        />
+      </div>
+      <div className="product-info">
+        <Text weight={500} className="product-title">
+          {title}
+        </Text>
+        <Group position="apart" mt="xs">
+          <Text weight={700}>₱{price}</Text>
+          <Text size="sm" color="dimmed">
+            ★ {rating} | {soldCount} sold
+          </Text>
+        </Group>
+      </div>
     </Card>
   );
 }
@@ -89,8 +100,8 @@ function Homepage() {
   ];
 
   return (
-    <div className="homepage">
-      <section className="recommended-products">
+    <Container className="homepage">
+      <section className="product-section">
         <Group position="apart" mb="md">
           <Text size="xl" weight={700}>
             RECOMMENDED FOR YOU
@@ -99,22 +110,14 @@ function Homepage() {
             See All &gt;
           </Text>
         </Group>
-        <SimpleGrid
-          cols={4}
-          spacing="lg"
-          breakpoints={[
-            { maxWidth: "md", cols: 3, spacing: "md" },
-            { maxWidth: "sm", cols: 2, spacing: "sm" },
-            { maxWidth: "xs", cols: 1, spacing: "sm" },
-          ]}
-        >
+        <div className="product-grid">
           {recommendedProducts.map((product, index) => (
             <ProductCard key={index} {...product} />
           ))}
-        </SimpleGrid>
+        </div>
       </section>
 
-      <section className="top-products">
+      <section className="product-section">
         <Group position="apart" mb="md" mt="xl">
           <Text size="xl" weight={700}>
             TOP PRODUCTS
@@ -123,21 +126,13 @@ function Homepage() {
             See All &gt;
           </Text>
         </Group>
-        <SimpleGrid
-          cols={4}
-          spacing="lg"
-          breakpoints={[
-            { maxWidth: "md", cols: 3, spacing: "md" },
-            { maxWidth: "sm", cols: 2, spacing: "sm" },
-            { maxWidth: "xs", cols: 1, spacing: "sm" },
-          ]}
-        >
+        <div className="product-grid">
           {topProducts.map((product, index) => (
             <ProductCard key={index} {...product} />
           ))}
-        </SimpleGrid>
+        </div>
       </section>
-    </div>
+    </Container>
   );
 }
 

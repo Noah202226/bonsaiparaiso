@@ -1,0 +1,31 @@
+.support-container {
+  padding: 40px 0;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.support-title {
+  margin-bottom: 20px;
+}
+
+.mantine-Accordion-item {
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+.mantine-Accordion-control {
+  background-color: #f8f9fa;
+}
+
+.mantine-Accordion-content {
+  padding: 15px;
+}
+
+.mantine-ActionIcon-root {
+  transition: transform 0.2s ease-in-out;
+}
+
+.mantine-ActionIcon-root:hover {
+  transform: scale(1.1);
+}
